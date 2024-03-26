@@ -60,5 +60,5 @@ while (true)
     if (stat == true) break;
     stat = CheckingForTheNumber(inputString);
     if (stat == true) break;
-    
+
 }
