@@ -17,48 +17,42 @@ bool CheckingForTheLetter(string str, string check) // проверка, сов�
 bool CheckingForTheNumber(string str)           // Проверяю, является ли введенная строка числом
 {
     int number;
+
     bool evenSuDdigit = false;
+
     if (int.TryParse(str, out number))
     {
         evenSuDdigit = CheckingEvenNumber(number);
     }
+
     return evenSuDdigit;
 }
 
-bool CheckingEvenNumber(int number)
+bool CheckingEvenNumber(int number)             // Проверяю, делится ли число на 2 без остатка
 {
     int sum = 0;
-    int numLen = CheckingLengthNum(number);
-    for (int i = 0; i < numLen; i++)
+    while (number > 0)
     {
         sum += number % 10;
         number /= 10;
     }
+
     if (sum % 2 == 0) return true;
+
     return false;
 }
 
-int CheckingLengthNum(int number)               // функция проверки количества цифр в числе
-{
-    int count = 1;
-    while (number > 9 || number < -9)
-    {
-        number /= 10;
-        count++;
-    }
-    return count;
-}
-
-
 Console.WriteLine("Введите q или условное число для выхода из цикла:");
-string inputString;
-bool stat = false;
+
+//string inputString;
+
 while (true)
 {
-    inputString = Console.ReadLine();
-    stat = CheckingForTheLetter(inputString, "q");
-    if (stat == true) break;
-    stat = CheckingForTheNumber(inputString);
-    if (stat == true) break;
+    string inputString = Console.ReadLine();
+
+    if (CheckingForTheLetter(inputString, "q") == true) break;
+
+    
+    if (CheckingForTheNumber(inputString) == true) break;
     
 }
